@@ -1,0 +1,42 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            margin: 30px;
+        }
+
+        textarea {
+            height: 5em;
+            width: 25em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <form name="textfield" action="" method="post">
+        {% csrf_token %}
+        Comments:<br>
+        <textarea name="comments" placeholder="If you have any comments, please enter them here."></textarea>
+        <br><br>
+        <label for="quantity" class="lab_quantity">Quantity:</label>
+        <input type="text" name="quantity" id="quantity" value="1" size="5" readonly><br><br>
+
+        <label for="username" class="lab_quantity">Username</label>
+        <input type="text" name="username" id="username" autofocus><br><br>
+
+        <label for="password" class="lab_quantity">Password:</label>
+        <input type="password" name="password" id="password" maxlength="6" placeholder="Enter your password"><br><br>
+
+        <label for="hidden" class="lab_quantity">Hidden:</label>
+        <input type="hidden" name="hidden" id="hidden" value="widget"><br><br>
+
+
+    </form>
+
+{% endblock %}

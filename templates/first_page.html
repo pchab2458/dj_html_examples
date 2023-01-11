@@ -1,0 +1,71 @@
+{% extends "app_base_html.html" %}
+{% load static %}
+
+{% block title %}HTML Examples{% endblock %}
+
+
+{% block content %}
+
+
+    <h2>Contents:</h2>
+
+
+    <ul>
+        <li><p><a href="{% url 'create_table' %}">Create Table</a></p></li>
+        <li><p><a href="{% url 'table_merge' %}">Table_merge</a></p></li>
+
+        <li><p><a href="{% url 'month_billing' %}">Month_billing_table</a></p></li>
+
+        <li><p><a href="{% url 'tab_order' %}">Tab_order</a></p></li>
+
+        <li><p><a href="{% url 'button' %}">Button</a></p></li>
+        <li><p><a href="{% url 'color' %}">Color</a></p></li>
+        <li><p><a href="{% url 'data_validation' %}">Data validation</a></p></li>
+        <li><p><a href="{% url 'date_time' %}">Date_time</a></p></li>
+        <li><p><a href="{% url 'datalist' %}">Datalist</a></p></li>
+        <li><p><a href="{% url 'dropdownlist' %}">Dropdownlist</a></p></li>
+        {#            <li><p><a href="{% url 'dm' %}">Create Table</a></p></li>#}
+        <li><p><a href="{% url 'fieldset' %}">Fieldset</a></p></li>
+        <li><p><a href="{% url 'file' %}">File</a></p></li>
+        <li><p><a href="{% url 'float' %}">Float</a></p></li>
+        <li><p><a href="{% url 'float2' %}">Float2</a></p></li>
+        <li><p><a href="{% url 'float3' %}">Float3</a></p></li>
+        <li><p><a href="{% url 'format_list' %}">Format_list</a></p></li>
+        <li><p><a href="{% url 'h_navigation' %}">H_Navigation</a></p></li>
+        <li><p><a href="{% url 'home' %}">Home</a></p></li>
+        {#            <li><p><a href="{% url 'home2' %}">Create Table</a></p></li>#}
+        <li><p><a href="{% url 'html5_element' %}">HTM5 Element</a></p></li>
+
+        <li><p><a href="{% url 'image' %}">Image</a></p></li>
+        <li><p><a href="{% url 'inline' %}">Inline</a></p></li>
+        <li><p><a href="{% url 'link' %}">Link</a></p></li>
+        <li><p><a href="{% url 'list' %}">List</a></p></li>
+        <li><p><a href="{% url 'list2' %}">List2</a></p></li>
+        <li><p><a href="{% url 'listbox' %}">Listbox</a></p></li>
+        <li><p><a href="{% url 'number_range' %}">Number range</a></p></li>
+        <li><p><a href="{% url 'output' %}">Output</a></p></li>
+        <li><p><a href="{% url 'pbtest' %}">pbtest</a></p></li>
+        <li><p><a href="{% url 'placeholder' %}">Placeholder</a></p></li>
+        <li><p><a href="{% url 'progress_meter_bar' %}">Progress_meter_bar</a></p></li>
+        <li><p><a href="{% url 'pseudo_class' %}">Pseudo_class</a></p></li>
+        <li><p><a href="{% url 'relational_selector' %}">Relational Selector</a></p></li>
+
+
+        <li><p><a href="{% url 'render_file' %}">Render File</a></p></li>
+        <li><p><a href="{% url 'saroyan' %}">Sarayan</a></p></li>
+        <li><p><a href="{% url 'search' %}">Search</a></p></li>
+        <li><p><a href="{% url 'show_image' %}">Show Image</a></p></li>
+        <li><p><a href="{% url 'special_text_block' %}">Special Textblock</a></p></li>
+
+        <li><p><a href="{% url 'text_block' %}">Text block</a></p></li>
+        <li><p><a href="{% url 'textarea' %}">Text Area</a></p></li>
+        <li><p><a href="{% url 'textfield' %}">Text Field</a></p></li>
+        <li><p><a href="{% url 'two_tier_menu' %}">Two_tier_menu</a></p></li>
+        <li><p><a href="{% url 'url_email_tel' %}">URL_Email_Tel</a></p></li>
+
+        <li><p><a href="{% url 'abbr_text' %}">Abbr_Text</a></p></li>
+
+    </ul>
+
+
+{% endblock %}

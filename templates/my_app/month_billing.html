@@ -1,0 +1,158 @@
+{% extends 'app_base_html.html' %}
+{% load static %}
+{% block title %}Create Table{% endblock %}
+
+{% block style %}
+
+    {#    <link href="{% static "css/app_body.css" %}" rel="stylesheet">#}
+
+    <style>
+        figure, figcaption {
+            margin: 0;
+            padding: 0;
+        }
+
+        figure {
+            {#border: 1px solid black;#}
+            {#width: 1200px;#}
+            {#padding: 10px;#}
+            {#background-color: lightblue;#}
+        }
+
+        figcaption {
+            {#display: block;#}
+            {#font-weight: bold;#}
+            {#text-align: center;#}
+            {#font-size: 150%;#}
+            {#padding-bottom: .25em;#}
+            {#background-color: yellow;#}
+        }
+
+
+
+        table {
+            border-collapse: collapse;
+            {#border: 2px solid black;#}
+            {#margin: 10px auto;#}
+            margin: 0 0;
+
+            {#background-color: yellow;#}
+        }
+
+        th, td {
+            {#border: 1px solid black;#}
+            padding: .2em .2em;
+            text-align: center;
+
+            width: 80px;
+        }
+
+        th.left, td.left {
+            {#text-align: left;#}
+            {#width: 220px;#}
+        }
+
+        td:nth-child(1){
+            text-align: left;
+            width: 200px;
+        }
+
+        thead, tfoot {
+            background-color: mediumseagreen;
+            color: white;
+
+            line-height: 1.7;
+        }
+
+        tfoot {
+            font-weight: bold;
+        }
+
+        th:first-child, td:first-child {
+            {#text-align: right;#}
+        }
+
+        tbody tr th:nth-child(2), tbody tr td:nth-child(2) {
+            text-align: center;
+            color: red;
+        }
+
+        tr:nth-child(even) {
+            background-color: lavender;
+        }
+
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Monthly Report</h1>
+    <figure>
+{#        <figcaption id="top">Monthly Billing</figcaption>#}
+        <table>
+            <thead>
+            <tr>
+                <th class="left">Name</th>
+                <th>Room</th>
+                <th>RAC</th>
+                <th>EC</th>
+                <th>WC</th>
+                <th>CSC</th>
+                <th>OSC</th>
+                <th>OVD</th>
+                <th>LF</th>
+                <th>TOTAL</th>
+                <th>P_AMT</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in bills %}
+
+                <tr>
+                    <td class="left">{{ i.0 }}</td>
+                    <td id="td2">{{ i.1 }}</td>
+                    <td>{{ i.2 }}</td>
+                    <td>{{ i.3 }}</td>
+                    <td>{{ i.4 }}</td>
+                    <td>{{ i.5 }}</td>
+                    <td>{{ i.6 }}</td>
+                    <td>{{ i.7 }}</td>
+                    <td>{{ i.8 }}</td>
+                    <td>{{ i.9 }}</td>
+                    <td>{{ i.10 }}</td>
+                </tr>
+
+            {% endfor %}
+
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <th class="left">Total Sales</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+                <td>100</td>
+
+
+            </tr>
+            </tfoot>
+        </table>
+
+        {#        <figcaption id="bottom">Total Sales by Book</figcaption>#}
+    </figure>
+{% endblock %}

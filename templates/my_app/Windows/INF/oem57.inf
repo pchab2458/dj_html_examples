@@ -1,0 +1,51 @@
+; File: SurfaceCameraWindowsHello.inf
+;
+; Description: Driver installation file for SurfaceCameraWindowsHello
+;
+; Copyright (C) 2015 Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider    = %ManufacturerName%
+DriverVer=08/01/2017,1.0.85.1
+CatalogFile = SurfaceCameraWindowsHello.cat
+PnpLockdown = 1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+FaceMF.Provider.dll = 1
+
+[DestinationDirs]
+DefaultDestDir = 11 ; \system32
+
+[Manufacturer]
+%ManufacturerName% = Microsoft,NTamd64
+
+[Microsoft.NTamd64]
+%SurfaceCameraWindowsHello.DeviceDesc% = SurfaceCameraWindowsHello_Install, ACPI\MSHW0085
+
+[SurfaceCameraWindowsHello_Install]
+AddReg = SurfaceCameraWindowsHello_AddReg
+DelReg = SurfaceCameraWindowsHello_DelReg
+Reboot
+
+[SurfaceCameraWindowsHello_AddReg]
+HKLM,SOFTWARE\Microsoft\Analog\Providers,"FaceAuthenticationSourcesHint", 0x00010001, 0x00000000
+
+[SurfaceCameraWindowsHello_DelReg]
+HKLM,SOFTWARE\Microsoft\Analog\Providers\Surface
+
+[SurfaceCameraWindowsHello_Install.Services]
+AddService = ,2
+
+[Strings]
+; localizable strings
+ManufacturerName                   = "Surface"
+SurfaceCameraWindowsHello.DeviceDesc = "Surface Camera Windows Hello"
+DiskName                           = "Surface Camera Windows Hello Driver Installation Disk"
+

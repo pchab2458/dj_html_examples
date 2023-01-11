@@ -1,0 +1,74 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+
+        /* basic setup */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: silver;
+        }
+
+        h2 {
+            padding: 1em;
+        }
+
+        /* the styles for the header, main content, sidebars, and footer */
+        header {
+            {#border-bottom: 2px solid #ef9c00;#}
+            background-color: green;
+        }
+
+        body {
+            width: 70%;
+            background-color: lightblue;
+            margin: 10px auto;
+            border: 1px solid black;
+        }
+
+        #sidebarA {
+            width: 20%;
+            height: 300px;
+            float: left;
+            {#border-right: 2px solid #ef9c00;#}
+            background-color: rosybrown;
+        }
+
+        main {
+            width: 50%;
+            height: 500px;
+            float: left;
+            background-color: silver;
+        }
+
+        #sidebarB {
+            width: 20%;
+            height: 200px;
+            float: right;
+            {#border-left: 2px solid #ef9c00;#}
+            background-color: olivedrab;
+        }
+
+        footer {
+            clear: both;
+            {#border-top: 2px solid #ef9c00;#}
+
+            background-color: yellow;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <header><h2>Header</h2></header>
+    <aside id="sidebarA"><h2>Sidebar A</h2></aside>
+    <main><h2>Main content</h2></main>
+    <aside id="sidebarB"><h2>Sidebar B</h2></aside>
+    <footer><h2>Footer</h2></footer>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Format list{% endblock %}
+
+{% block style %}
+    <style>
+
+
+
+    h1{
+        margin: 0;
+        padding: 0;
+    }
+        ul.circle {
+            list-style-type: circle;
+
+        }
+
+        ul.star {
+
+            list-style-image: url("{% static 'images/smiley.gif' %}");
+
+        }
+
+        ul.sqare {
+
+            list-style-type: square;
+
+        }
+
+    ul.dec_l_0{
+        list-style-type: decimal-leading-zero;
+    }
+
+    ul.up_alpha{
+        list-style-type: upper-alpha;
+        color: red;
+        margin-left: 0px;
+    }
+
+    li{
+        padding-left: .25em;
+        padding-bottom: .25em;
+    }
+
+
+
+
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <h2>Popular web browsers include</h2>
+    <ul class="circle">
+        <li>Chrome</li>
+        <li>Internet Explorer</li>
+        <li>Firefox</li>
+    </ul>
+    <h2>Prime skills for web developers are</h2>
+    <ul class="star">
+        <li>HTML5 and CSS3</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+    </ul>
+    <h2 id="square">Popular web browsers</h2>
+    <ul class="sqare">
+        <li>Chrome</li>
+        <li>Internet Explorer</li>
+        <li>Firefox</li>
+        <li>Safari</li>
+        <li>Opera</li>
+    </ul>
+
+     <h2 >Popular web browsers</h2>
+    <ul class="dec_l_0">
+        <li>Chrome</li>
+        <li>Internet Explorer</li>
+        <li>Firefox</li>
+        <li>Safari</li>
+        <li>Opera</li>
+    </ul>
+
+     <h2 >Popular web browsers</h2>
+    <ul class="up_alpha">
+        <li>Chrome</li>
+        <li>Internet Explorer</li>
+        <li>Firefox</li>
+        <li>Safari</li>
+        <li>Opera</li>
+    </ul>
+
+
+
+
+
+    <br><br>
+
+
+{% endblock %}

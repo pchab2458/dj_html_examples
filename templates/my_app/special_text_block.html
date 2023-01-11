@@ -1,0 +1,36 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Special types of text{% endblock %}
+
+{% block link %}
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <p>How to use JavaScript to display the year:</p>
+    <pre>
+        var today = new Date();
+        document.writeln( today.getFullYear() );
+    </pre>
+
+    <p>Ernest Hemingway wrote:</p>
+    <blockquote>
+        <q>Cowardice, as distinguished from panic, is almost always simply
+            a lack of ability to suspend the functioning of the imagination.</q><br>
+        <cite>Hemingway</cite>
+    </blockquote>
+
+    <p>How to contact Mike Murach &amp;&amp; Associates &trade;:</p>
+    <address>3/44 Phahonyothin rd, Bangkok<br>1-800-221-5528<br/>
+        <a href="emailto:murachbooks@murach.com">murachbooks@murach.com</a>
+    </address>
+
+
+{% endblock %}

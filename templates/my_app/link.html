@@ -1,0 +1,26 @@
+{% extends 'app_base_html.html' %}
+
+{% load static %}
+
+{% block title %}Links{% endblock %}
+
+{% block link %}
+{% endblock %}
+
+
+{% block content %}
+
+   <p>Go view our <a href="{% url 'listbox' %}">product list</a>.</p>
+{#    <p>Go view our <a href="{% url 'my_app:pbtest' %}">product list</a>.</p>#}
+{#    Go view our <a href="listbox.html">product list</a>.</p>#}
+
+		<p>Read about the <a href="{% url 'pbtest' %}">services we
+		provide</a>.</p>
+
+		<p>View your <a href="{% url 'color' %}">shopping cart</a>.</p>
+
+		<p>To learn more about JavaScript, visit the
+		<a href="{% url 'date_time' %}">official JavaScript website</a>.</p>
+
+
+{% endblock %}

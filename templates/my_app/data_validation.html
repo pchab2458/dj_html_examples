@@ -1,0 +1,19 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+
+{% block content %}
+
+    <form action="" name="form3" method="post">
+        Name: <input type="text" name="name" required><br>
+        Address:<input type="text" name="address" formnovalidate><br>
+        Zip: <input type="text" name="zip" required><br>
+        Phone: <input type="text" name="phone" required autocomplete="off"><br>
+
+        <input type="submit" name="submit" value="Submit survey">
+
+
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}Float{% endblock %}
+{% block script %}
+    <style>
+
+        body {
+            width: 50%;
+            background: antiquewhite;
+        }
+
+        main, aside, footer {
+            margin: 0;
+            padding: 0px 0px;
+        }
+
+        main {
+            background-color: greenyellow;
+            {#clear: both;#}
+            {#float: left;#}
+        }
+
+        aside {
+            margin: 0 10px 0px;
+            width: 150px;
+            float: right;
+            border: 1px solid black;
+            background-color: cornflowerblue;
+
+        }
+
+        footer {
+            clear: both;
+            background-color: aquamarine;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+        <aside>
+            <p>The luncheon starts 15 minutes after the lecture ends</p>
+        </aside>
+    <main>
+        <p>Welcome to San Joaquin Valley Town Hall. We have some fascinating
+            speakers for you this season!</p>
+    </main>
+
+{##}
+    {#    <aside>#}
+    {#        <p>The luncheon starts 15 minutes after the lecture ends</p>#}
+    {#    </aside>#}
+
+    <footer>
+        <p>Please call today at (559) 555-1212 to get your tickets!</p>
+    </footer>
+{% endblock %}

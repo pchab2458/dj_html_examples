@@ -1,0 +1,376 @@
+
+
+
+{% extends 'my_app/../base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}contract_form{% endblock %}
+
+
+{% block script %}
+
+
+    {#    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">#}
+    {#    <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>#}
+    {#     <script src="jquery-ui-1.12.1/jquery-3.3.1.js"></script>#}
+    {#    <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>#}
+
+
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="jquery-ui-1.12.1/jquery-3.3.1.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#datepicker").datepicker({
+                minDate: new Date(),
+                maxDate: +45,
+                showButtonPanel: true,
+            })
+
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block style %}
+    {#    <style>#}
+    {##}
+    {##}
+    {#        label {#}
+    {#            color: navy;#}
+    {#            float: left;#}
+    {#            width: 8em;#}
+    {#            font-weight: bold;#}
+    {##}
+    {#background-color: bisque;#} text-align: right;
+    {#            margin-right: .15em;#}
+    {#margin-bottom: 1em; padding-bottom: 1em;#}
+    {#        }#}
+    {##}
+    {#        #id_name {#}
+    {#            width: 20em;#}
+    {#            background-color: lightblue;#}
+    {#            margin-top: .15em;#}
+    {##}
+    {#        }#}
+    {##}
+    {#        #id_email {#}
+    {#            width: 20em;#}
+    {#            background-color: lightblue;#}
+    {#            margin-top: .15em;#}
+    {##}
+    {#        }#}
+    {##}
+    {#        #id_message {#}
+    {#            background-color: lightblue;#}
+    {#            width: 20em;#}
+    {#            height: 5em;#}
+    {#            margin-top: .25em;#}
+    {#        }#}
+    {##}
+    {#        #submit {#}
+    {#            margin-left: 10em;#}
+    {#        }#}
+    {##}
+    {##}
+    {#    </style>#}
+
+{% endblock %}
+
+{% block content %}
+
+    <form name="contact_form" action="" method="post">
+        {% csrf_token %}
+
+
+        {#        {{ form.subject.label_tag }}#}
+        {#        {{ form.subject }}<br>#}
+        {##}
+        {#        {{ form.message.label_tag }}#}
+        {#        {{ form.message }}<br>#}
+        {#        #}
+        {#        {{ form.sender.label_tag }}#}
+        {#        {{ form.sender }}<br>#}
+        {##}
+        {#        {{ form.cc_myself.label_tag }}#}
+        {#        {{ form.cc_myself }}<br>#}
+
+        {##}
+        {#        {% for field in form %}#}
+        {##}
+        {#            {{ field.label_tag}}#}
+        {#            {{ field }}<br>#}
+        {##}
+        {#        {% endfor %}#}
+
+        {# ====================================================== #}
+
+
+        {# ====================================================== #}
+
+        {#        <div class="contact">#}
+        {#            <p>#}
+        {#                <label for="id_f_name">First Name:</label>#}
+        {#                <span id="id_f_name">{{ form.f_name }}</span><br>#}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {##}
+        {#                <label for="id_l_name">Last Name:</label>#}
+        {#                <span id="id_l_name">{{ form.l_name }}</span>#}
+        {#            </p>#}
+        {##}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_pin">Personal ID:</label>#}
+        {#                <span id="id_pin">{{ form.pin }}</span>#}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_phone">Phone:</label>#}
+        {#                <span id="id_phone">{{ form.phone }}</span>#}
+        {#            </p>#}
+        {##}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_deposit">Deposit:</label>#}
+        {#                <span id="id_deposit">{{ form.deposit }}</span>#}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {##}
+        {##}
+        {#               #}
+        {##}
+        {##}
+        {#                <label for="date_pk">Start Date:</label>#}
+        {#                <span id="date_pk">{{ form.start_date }}</span>#}
+        {#            </p>#}
+        {##}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_room_no">Room No.:</label>#}
+        {#                <span id="id_room_no">{{ form.room_no }}</span>#}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_extra">Extra Items:</label>#}
+        {#                <span id="id_extra">{{ form.extra }}</span>#}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_start_date">Adjustment:</label>#}
+        {#                <span id="id_adj">{{ form.adjust }}</span>#}
+        {##}
+        {##}
+        {#            </p>#}
+        {##}
+        {#            <p>#}
+        {#                <label for="id_phone">Photo:</label>#}
+        {#                <span id="id_photo">{{ form.photo }}</span>#}
+        {#            </p>#}
+        {##}
+        {##}
+        {#        </div>#}
+        {#        #}
+        {# =================================================================== #}
+
+
+        {#    <input id="submit" type="submit" value="Submit">#}
+        {#    </form>#}
+
+
+        {#        #-------------------------------------------------#}
+
+        {#    <form method="post" novalidate>#}
+        {#        {% csrf_token %}#}
+        {#        {{ form.as_p}}#}
+        {#        <button type="submit">Submit</button>#}
+        {#    </form>#}
+
+        {#    <form method="post" novalidate>#}
+        {#        {% csrf_token %}#}
+        {#        <table border="1">#}
+        {#            {{ form }}#}
+        {#        </table>#}
+        {#        <button type="submit">Submit</button>#}
+        {#    </form>#}
+
+        {#    <form method="post" novalidate>#}
+        {#  {% csrf_token %}#}
+        {##}
+        {#  {{ form.non_field_errors }}#}
+        {##}
+        {#  {% for hidden_field in form.hidden_fields %}#}
+        {#    {{ hidden_field.errors }}#}
+        {#    {{ hidden_field }}#}
+        {#  {% endfor %}#}
+        {##}
+        {#  <table border="1">#}
+        {#    {% for field in form.visible_fields %}#}
+        {#      <tr>#}
+        {#        <th>{{ field.label_tag }}</th>#}
+        {#        <td>#}
+        {#          {{ field.errors }}#}
+        {#          {{ field }}#}
+        {#          {{ field.help_text }}#}
+        {#        </td>#}
+        {#      </tr>#}
+        {#    {% endfor %}#}
+        {#  </table>#}
+        {##}
+        {#  <button type="submit">Submit</button>#}
+        {#</form>#}
+
+
+        {#    <form method="post" novalidate>#}
+        {#        {% csrf_token %}#}
+        {##}
+        {#        {% if form.non_field_errors %}#}
+        {#            <ul>#}
+        {#                {% for error in form.non_field_errors %}#}
+        {#                    <li>{{ error }}</li>#}
+        {#                {% endfor %}#}
+        {#            </ul>#}
+        {#        {% endif %}#}
+        {##}
+        {#        {% for hidden_field in form.hidden_fields %}#}
+        {#            {% if hidden_field.errors %}#}
+        {#                <ul>#}
+        {#                    {% for error in hidden_field.errors %}#}
+        {#                        <li>(Hidden field {{ hidden_field.name }}) {{ error }}</li>#}
+        {#                    {% endfor %}#}
+        {#                </ul>#}
+        {#            {% endif %}#}
+        {#            {{ hidden_field }}#}
+        {#        {% endfor %}#}
+        {##}
+        {#        <table border="1">#}
+        {#            {% for field in form.visible_fields %}#}
+        {#                <tr>#}
+        {#                    <th>{{ field.label_tag }}</th>#}
+        {#                    <td>#}
+        {#                        {% if field.errors %}#}
+        {#                            <ul>#}
+        {#                                {% for error in field.errors %}#}
+        {#                                    <li>{{ error }}</li>#}
+        {#                                {% endfor %}#}
+        {#                            </ul>#}
+        {#                        {% endif %}#}
+        {#                        {{ field }}#}
+        {#                        {% if field.help_text %}#}
+        {#                            <br/>{{ field.help_text }}#}
+        {#                        {% endif %}#}
+        {#                    </td>#}
+        {#                </tr>#}
+        {#            {% endfor %}#}
+        {#        </table>#}
+        {##}
+        {#        <button type="submit">Submit</button>#}
+        {#    </form>#}
+
+        {#    <form method="post" novalidate>#}
+        {#        {% csrf_token %}#}
+        {##}
+        {#        {{ form.non_field_errors }}#}
+        {##}
+        {#        {{ form.source.errors }}#}
+        {#        {{ form.source }}#}
+        {##}
+        {#        <table border="1">#}
+        {##}
+        {#            <tr>#}
+        {#                <th>{{ form.name.label_tag }}</th>#}
+        {#                <td>#}
+        {#                    {{ form.name.errors }}#}
+        {#                    {{ form.name }}#}
+        {#                </td>#}
+        {#            </tr>#}
+        {##}
+        {#            <tr>#}
+        {#                <th>{{ form.email.label_tag }}</th>#}
+        {#                <td>#}
+        {#                    {{ form.email.errors }}#}
+        {#                    {{ form.email }}#}
+        {#                </td>#}
+        {#            </tr>#}
+        {##}
+        {#            <tr>#}
+        {#                <th>{{ form.message.label_tag }}</th>#}
+        {#                <td>#}
+        {#                    {{ form.message.errors }}#}
+        {#                    {{ form.message }}#}
+        {#                    <br/>#}
+        {#                    {{ form.message.help_text }}#}
+        {#                </td>#}
+        {#            </tr>#}
+        {##}
+        {#        </table>#}
+        {##}
+        {#        <button type="submit">Submit</button>#}
+        {#    </form>#}
+
+
+        {#    <form method="post">#}
+        {#    <form method="post" novalidate>#}
+        {#        {% csrf_token %}#}
+
+        {#        {{ form.non_field_errors }}#}
+        {#        {{ err }}#}
+        {##}
+        {#        {% for hidden_field in form.hidden_fields %}#}
+        {#            {{ hidden_field.errors }}#}
+        {#            {{ hidden_field }}#}
+        {#        {% endfor %}#}
+        {##}
+        {#        <table border="1">#}
+        {#            {% for field in form.visible_fields %}#}
+        {#            {% for field in form.hidden_fields %}#}
+        {#                <tr>#}
+        {#                    <th>{{ field.label_tag }}</th>#}
+        {#                    <td>#}
+        {#                                                {{ field.errors }}#}
+        {#                        {% render_field field style=" border: 2px dashed blue;" placeholder=field.label %}#}
+        {#                        {{ field.help_text }}#}
+        {##}
+        {#                    </td>#}
+        {#                </tr>#}
+        {#            {% endfor %}#}
+        {#        </table>#}
+
+        {#        {{ form.name.errors }}#}
+        {#        {{ form.name.label_tag }}#}
+        {#        {{ form.name }}#}
+        {#        {{ form.name.errors }}#}
+        {##}
+        {#        {{ form.email.errors }}#}
+        {#        {{ form.email.label_tag }}#}
+        {#        {{ form.email }}#}
+        {#        {{ form.email.errors }}#}
+        {##}
+        {#        {{ form.message.errors }}#}
+        {#        {{ form.message.label_tag }}#}
+        {#        {{ form.message }}#}
+        {#        {{ form.message.help_text }}#}
+        {#        {{ form.message.errors }}#}
+
+        {#        {{ form.as_p}}#}
+
+
+        <label for="datepicker">Arrival date:</label>
+        <input type="text" id="datepicker">
+
+
+        <button id="submit" type="submit">Submit</button>
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+;
+; SurfacePowerMeter.inf
+;
+; Microsoft Surface Power Meter Inf
+;
+; Copyright (c) Microsoft Corporation. All rights reserved.
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfacePowerMeter.cat
+DriverVer=02/19/2015,1.1.65.1
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%SurfacePowerMeter.DeviceDesc%=SurfacePowerMeter_Device, ACPI\MAX34407
+
+[SurfacePowerMeter_Device.NT]
+CopyFiles=Drivers_Dir
+
+;-------------- Service installation
+;
+;Specify a null service in AddService will install inbox null driver
+[SurfacePowerMeter_Device.NT.Services]
+AddService = ,%SPSVCINST_ASSOCSERVICE%, SurfacePowerMeter_Service_Inst
+
+; -------------- SurfacePowerMeter driver install sections
+[SurfacePowerMeter_Service_Inst]
+DisplayName    = %SurfacePowerMeter.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+
+;
+;--- SurfacePowerMeter_Device Coinstaller installation ------
+;
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Microsoft"
+ClassName="Surface Power Meter"
+DiskName = "Surface Power Meter Installation Disk"
+SurfacePowerMeter.DeviceDesc = "Surface Power Meter"
+SurfacePowerMeter.SVCDESC = "Surface Power Meter Service"

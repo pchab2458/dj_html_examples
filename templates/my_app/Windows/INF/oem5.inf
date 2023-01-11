@@ -1,0 +1,96 @@
+;
+; SurfaceDigitizerIntegration.inf
+;
+; Copyright (c) Microsoft Corporation. All rights reserved
+;
+
+[Version]
+Signature="$Windows NT$"
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Class=HIDClass
+Provider=%ManufacturerName%
+CatalogFile=SurfaceDigitizerIntegration.cat
+DriverSet={15E325FC-81C0-4DC3-B3E3-ADF301735091}
+PnPLockDown=1
+
+DriverVer=06/05/2017,2.0.313.0
+
+[DestinationDirs]
+DefaultDestDir   = 12
+;
+; Driver information
+;
+;************************************************************
+; Install Section
+;************************************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%SurfaceDigitizerIntegration.DeviceDesc% = SurfaceDigitizerIntegration, HID\VEN_8086&DEV_9D3E&Col09
+%SurfaceDigitizerIntegration.DeviceDesc% = SurfaceDigitizerIntegration, HID\VID_045E&PID_0911&MI_02&Col07
+
+;************************************************************
+; General installation section
+;************************************************************
+[SurfaceDigitizerIntegration.NT]
+CopyFiles=SurfaceDigitizerIntegration.CopyFiles
+
+
+;************************************************************
+; File sections
+;************************************************************
+[SurfaceDigitizerIntegration.CopyFiles]
+SurfaceDigitizerIntegration.sys
+
+;************************************************************
+; Service Installation
+;************************************************************
+[SurfaceDigitizerIntegration.NT.Services]
+AddService = SurfaceDigitizerIntegration, 0x000001f8, SurfaceDigitizerIntegration_Service_Inst
+AddService = ,%SPSVCINST_ASSOCSERVICE% ; null service install
+
+[SurfaceDigitizerIntegration.NT.HW]
+; Add as device upper filter
+AddReg = SurfaceDigitizerIntegration.HW.AddReg
+
+[SurfaceDigitizerIntegration_Service_Inst]
+DisplayName    = %SurfaceDigitizerIntegration.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\SurfaceDigitizerIntegration.sys
+
+[SurfaceDigitizerIntegration.HW.AddReg]
+HKR,,"UpperFilters",0x00010008,"SurfaceDigitizerIntegration"
+
+
+;************************************************************
+; Source file information
+;************************************************************
+
+[SourceDisksNames]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles]
+SurfaceDigitizerIntegration.sys = 1,,
+
+;************************************************************
+; Strings
+;************************************************************
+
+[Strings]
+;
+; Non-Localizable Strings
+;
+SERVICEROOT    = "System\CurrentControlSet\Services"
+SPSVCINST_ASSOCSERVICE= 0x00000002
+
+;
+; Localizable Strings
+;
+DiskId1="SurfaceDigitizerIntegration Installation Disk"
+SurfaceDigitizerIntegration.DeviceDesc = "Surface Digitizer Integration"
+SurfaceDigitizerIntegration.SvcDesc = "Surface Digitizer Integration Service"
+ManufacturerName="Surface"

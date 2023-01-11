@@ -1,0 +1,103 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfaceTypeCoverV3FwUpdate.inf
+;
+; Description:        Driver installation file for SurfaceTypeCoverV3 firmware update.
+;
+; Copyright (C) 2015 Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class=HIDClass
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceTypeCoverV3FwUpdate.cat
+DriverVer=07/30/2015,1.1.350.0
+PnPLockDown=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+SurfaceTypeCoverV3FwUpdate.dll=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=SurfaceTypeCoverV3FwUpdate, HID\VID_045E&PID_07DC&Col05
+%DeviceName%=SurfaceTypeCoverV3FwUpdate, HID\VID_045E&PID_07DD&Col05
+
+; =================== UMDF Device ==================================
+
+[SurfaceTypeCoverV3FwUpdate.NT]
+CopyFiles=UMDriverCopy
+
+[SurfaceTypeCoverV3FwUpdate.NT.hw]
+AddReg=SurfaceTypeCoverV3FwUpdate_AddReg
+
+[SurfaceTypeCoverV3FwUpdate.NT.Services]
+AddService=WUDFRd,0x000001f8,WUDFRD_ServiceInstall     ; This sets the device as a filter
+AddService = ,%SPSVCINST_ASSOCSERVICE% ; null service install
+
+
+[SurfaceTypeCoverV3FwUpdate.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+
+[SurfaceTypeCoverV3FwUpdate.NT.Wdf]
+UmdfService=SurfaceTypeCoverV3FwUpdate,SurfaceTypeCoverV3FwUpdate_Install
+UmdfServiceOrder=SurfaceTypeCoverV3FwUpdate
+UmdfKernelModeClientPolicy=AllowKernelModeClients
+UmdfMethodNeitherAction=Copy
+UmdfFileObjectPolicy=AllowNullAndUnknownFileObjects
+
+
+[SurfaceTypeCoverV3FwUpdate_Install]
+UmdfLibraryVersion=2.0.0
+ServiceBinary=%12%\UMDF\SurfaceTypeCoverV3FwUpdate.dll
+
+[SurfaceTypeCoverV3FwUpdate_AddReg]
+HKR,,"UpperFilters",0x00010008,"WUDFRd" ; FLG_ADDREG_TYPE_MULTI_SZ | FLG_ADDREG_APPEND
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType  = %SERVICE_KERNEL_DRIVER%
+StartType    = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\WUDFRd.sys
+StartName = \Driver\WudfRd
+
+[CoInstallers_CopyFiles]
+
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,WudfCoInstaller.dll
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\umdf
+
+
+[UMDriverCopy]
+SurfaceTypeCoverV3FwUpdate.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Microsoft"
+ClassName="HID" ;
+DiskName = "SurfaceTypeCoverV3FwUpdate Installation Disk"
+WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceName="Surface Type Cover Firmware Update"
+
+; non-localizable
+SPSVCINST_ASSOCSERVICE= 0x00000002
+SERVICE_KERNEL_DRIVER = 1
+SERVICE_BOOT_START    = 0
+SERVICE_SYSTEM_START  = 1
+SERVICE_AUTO_START    = 2
+SERVICE_DEMAND_START  = 3
+SERVICE_ERROR_NORMAL  = 1
+SERVICE_ERROR_IGNORE  = 0
+

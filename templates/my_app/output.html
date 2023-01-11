@@ -1,0 +1,44 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+
+{% block content %}
+
+    <p>Enter the numbers in both fields and click the calcullate button.</p>
+
+    <form onsubmit="return false" name="output" method="post">
+
+
+        <label for="x" class="lab_total">Number X:</label>
+        <input type="number" name="x" id="x" min="100" step="5" value="100"><br>
+
+
+
+        <label for="y" class="lab_total">Number Y:</label>
+        <input type="number" name="y" id="y" min="100" step="5" value="100"><br>
+
+        <label for="z" class="lab_total">Number z:</label>
+        <input type="number" name="z" id="z" min="0" step="10" value="100"><br>
+
+
+        <input type="button" id="ouputbt" value="Calculate"
+               onclick="result.value = parseInt(x.value)+parseInt(y.value)*parseInt(z.value)"><br><br>
+
+        {#        <label for="result" class="lab_total">Total:</label>#}
+        {#        <output name="result" id="result" for="x y">RESULT</output>#}
+        <output for="x y" name="result" id="result">RESULT</output>
+
+
+        {#        <input type="number" name="x" id="x" min="100" step="5" value="100">+#}
+        {#        <input type="number" name="y" id="y" min="100" step="5" value="100"><br><br>#}
+
+        {#        <input type="button" value="Calculate" onclick="result.value = parseInt(x.value)+parseInt(y.value)"><br><br>#}
+
+        {#        Total:#}
+        {#        <output name="result" for="x y"></output>#}
+
+
+    </form>
+
+
+
+{% endblock %}

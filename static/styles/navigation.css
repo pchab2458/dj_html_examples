@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 87.5%;
+    width: 1200px;
+    background-color: white;
+    margin: 15px auto;
+    padding: 20px;
+    /*	border: 1px solid black*/
+}
+
+h2 {
+    font-size: 125%;
+    margin-bottom: .5em;
+    clear: both;
+}
+
+nav {
+    margin-bottom: 2em;
+}
+
+/* the styles for the vertical navigation menu */
+#nav_menu_1 ul {
+    list-style: none;
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+
+    background-color: goldenrod;
+
+}
+
+/* the styles for the first horizontal navigation menu ***************************************/
+
+#nav_menu_1 ul li {
+
+    /*display: block;;*/
+
+    width: 250px;
+    /*margin-bottom: .5em;*/
+    border: 2px solid blue;
+
+    /*float: left;*/
+    /*text-align: center;*/
+
+    background-color: rosybrown;
+
+    /*margin-left: 2em;*/
+    /*margin-top: 1em;*/
+    /*margin-bottom: 1em;*/
+
+    padding: .5em;
+    margin: .5em;
+
+}
+
+#nav_menu_1 ul li a {
+
+    background-color: yellow;
+
+    display: block;
+    font-weight: bold;
+    color: blue;
+    text-decoration: none;
+    /*padding: .5em 0 .5em 1.5em;*/
+    /*padding: 0.25em 0em .25em;*/
+
+    width: 180px;
+    text-align: center;
+
+}
+
+#nav_menu_1 ul li a.current {
+    background-color: silver;
+}
+
+/* the styles for the first horizontal navigation menu ***************************************/
+#nav_menu_2 ul {
+    list-style: none;
+    padding: 1em 0; /* padding above and below li elements */
+    text-align: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    background-color: gold;
+}
+
+#nav_menu_2 ul li {
+    display: inline;
+    /*padding: 1em 0em 1em;*/
+
+    background-color: skyblue;
+
+    /*float: left;*/
+    text-align: left;
+
+}
+
+#nav_menu_2 ul li a {
+
+    display: inline;
+    font-weight: bold;
+    color: blue;
+
+    background-color: silver;
+
+    /*margin: 1em;*/
+
+}
+
+#nav_menu_2 ul li a.current {
+    /*text-decoration: none;*/
+}
+
+/* the styles for the first horizontal navigation menu ***************************************/
+#nav_menu_3 ul {
+    list-style: none;
+}
+
+#nav_menu_3 ul li {
+    float: left;
+}
+
+#nav_menu_3 ul li a {
+    text-align: center;
+    display: block;
+    width: 175px;
+    padding: 1em 0; /* padding above and below li elements */
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-right: 2px solid white;
+}
+
+#nav_menu_3 ul li a.lastitem {
+    border-right: none;
+}
+
+#nav_menu_3 ul li a.current {
+    color: yellow;
+}
+
+#nav_menu_3 ul li a:hover, #nav_menu ul li a:focus {
+    background-color: red;
+}
+
+#nav_menu_2 ul li a:hover, #nav_menu ul li a:focus {
+    background-color: greenyellow;
+}
+
+#nav_menu_1 ul li a:hover, #nav_menu ul li a:focus {
+    background-color: skyblue;
+}

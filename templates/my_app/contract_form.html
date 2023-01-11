@@ -1,0 +1,98 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}contract_form{% endblock %}
+
+{% block script %}
+    <style>
+        body {
+
+            font: 90% Arial, Helvetica, SansSerif;
+            margin: 30px;
+        }
+
+        label {
+            color: navy;
+            float: left;
+            width: 7em;
+            font-weight: bold;
+            text-align: right;
+            margin-right: .5em;
+        }
+
+        #submit {
+            margin-left: 10em;
+        }
+
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    {##}
+    {#    <form name="contract_form" action="." method="post">#}
+    {#        {% csrf_token %}#}
+    {#        {{ form.subject.label_tag }}#}
+    {#        {{ form.subject }}<br>#}
+    {##}
+    {#        {{ form.message.label_tag }}#}
+    {#        {{ form.message }}<br>#}
+    {#        #}
+    {#        {{ form.sender.label_tag }}#}
+    {#        {{ form.sender }}<br>#}
+    {##}
+    {#        {{ form.cc_myself.label_tag }}#}
+    {#        {{ form.cc_myself }}<br>#}
+
+    {##}
+    {#        {% for field in form %}#}
+    {##}
+    {#            {{ field.label_tag}}#}
+    {#            {{ field }}<br>#}
+    {##}
+    {#        {% endfor %}#}
+
+    {#        <div class="contract">#}
+    {#            <p>#}
+    {##}
+    {#                <label for="{{ form.subject.id_for_label }}">Subject:</label>#}
+    {#                <label for="id_subject">Subject:</label>#}
+    {#                <input id="id_subject" type="text" name="subject" maxlength="100" required>#}
+    {#                {{ form.subject }}#}
+    {##}
+    {#            </p>#}
+    {##}
+    {#            <p>#}
+    {##}
+    {#                <label for="id_message">Message:</label>#}
+    {#                <span id="id_message">{{ form.message }}</span>#}
+    {#            </p>#}
+    {##}
+    {#            <p>#}
+    {#                <label for="id_sender">Your email:</label>#}
+    {#                <span id="id_sender">{{ form.sender }}</span>#}
+    {#            </p>#}
+    {##}
+    {#            <p>#}
+    {#                <label for="id_cc_myself">CC_Myself:</label>#}
+    {#                {{ form.cc_myself }}#}
+    {#            </p>#}
+    {##}
+    {##}
+    {#        </div>#}
+
+
+{#    <input id="submit" type="submit" value="Submit">#}
+{#    </form>#}
+
+
+    {#        #-------------------------------------------------#}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+{% endblock %}

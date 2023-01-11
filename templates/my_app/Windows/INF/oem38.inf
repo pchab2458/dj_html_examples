@@ -1,0 +1,91 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfaceIntegrationServiceDriver.inf
+;
+; Description:        Installation file for the Surface Service.  This INX
+;                     will install/update SurfaceService, and also install
+;                     a NULL driver on the ACPI node.
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceIntegrationServiceDriver.cat
+DriverVer=10/11/2016,1.0.241.0
+PnPLockDown=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+SurfaceService.exe=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=SurfaceIntegrationServiceDriver, ACPI\MSHW0094
+%DeviceName%=SurfaceIntegrationServiceDriver, {98DE32A9-5D44-419E-B67D-66072BCEF58B}\SISD_DEVICE
+
+[SurfaceIntegrationServiceDriver.NT]
+CopyFiles=ServiceCopy
+DelReg=RemoveServiceFromRunLine
+
+[SurfaceIntegrationServiceDriver.NT.hw]
+
+[SurfaceIntegrationServiceDriver.NT.Services]
+AddService=SurfaceService,0x00000800,SurfaceServiceInstall  ; This installs SurfaceService (NT Service)
+AddService=,%NULL_DRIVER%                                   ; NULL function driver
+
+[SurfaceIntegrationServiceDriver.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=ServiceCopy
+
+
+[SurfaceServiceInstall]
+DisplayName   = %ServiceDisplayName%
+Description   = %ServiceDescription%
+ServiceType   = %SERVICE_WIN32_SHARE_PROCESS%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %11%\SurfaceService.exe
+
+
+[CoInstallers_AddReg]
+
+[DestinationDirs]
+ServiceCopy=11
+
+[ServiceCopy]
+SurfaceService.exe
+
+[RemoveServiceFromRunLine]
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Run","SurfaceService.exe",0x00020000
+
+
+[Strings]
+ManufacturerName="Microsoft"
+DiskName = "Surface Integration Service Driver Installation Disk"
+DeviceName="Surface Integration Service Device"
+ServiceDisplayName="Surface Integration Service"
+ServiceDescription="Provides support specific for Surface Hardware"
+
+;
+; Non-localizable
+;
+NULL_DRIVER                 = 2
+SPSVCINST_ASSOCSERVICE      = 0x00000002
+SERVICE_KERNEL_DRIVER       = 1
+SERVICE_BOOT_START          = 0
+SERVICE_SYSTEM_START        = 1
+SERVICE_AUTO_START          = 2
+SERVICE_DEMAND_START        = 3
+SERVICE_ERROR_NORMAL        = 1
+SERVICE_ERROR_IGNORE        = 0
+SERVICE_WIN32_SHARE_PROCESS = 0x00000020
+
+;; eof: SurfaceIntegrationServiceDriver.inx
+;;

@@ -1,0 +1,28 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+
+    {% block link %}
+    {% endblock %}
+
+
+    {% block script %}
+    {% endblock %}
+
+    {% block style %}
+    {% endblock %}
+
+</head>
+<body onload="setProgressAndMeter()">
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>

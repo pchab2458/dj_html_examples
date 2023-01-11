@@ -1,0 +1,23 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+
+{% block content %}
+
+    <form action="" name="render_file" method="post">
+        <label for="firstname"><u>F</u>irst name</label>
+        <input type="text" name="firstname" id="firstname"  accesskey="F"><br>
+
+        <label for="lastname"><u>L</u>ast name</label>
+        <input type="text" name="lastname" id="lastname" accesskey="L"><br>
+
+        <label for="email"><u>E</u>Mail</label>
+        <input type="email" name="email" id="email" accesskey="E"><br>
+
+
+
+
+    </form>
+
+
+
+{% endblock %}

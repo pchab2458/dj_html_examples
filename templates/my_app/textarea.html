@@ -1,0 +1,36 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            margin: 30px;
+        }
+
+        textarea {
+            height: 5em;
+            width: 25em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <form name="textarea" action="" method="post">
+        {% csrf_token %}
+        Comments:<br>
+        <textarea name="comments" placeholder="If you have any comments, please enter them here."></textarea>
+
+        <br><br>
+        <label for="textarea">Comments:</label><br>
+        <textarea id="textarea" name="comments" placeholder="If you have any comments, please enter them here.">
+</textarea>
+
+
+
+    </form>
+
+{% endblock %}

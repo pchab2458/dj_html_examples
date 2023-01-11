@@ -1,0 +1,4 @@
+#define OBJECT_1    0
+#define DEVICE_COUNTER_1    2
+#define DEVICE_COUNTER_2    4
+#define LAST_OBJECT_1_COUNTER_OFFSET    4

@@ -1,0 +1,33 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Mike Murach &amp; Associates, Inc.{% endblock %}
+
+{% block link %}
+
+
+    {#    <link rel="stylesheet" href="{% xstatic 'styles/pb.css' %}">#}
+
+
+{% endblock %}
+
+{% block style %}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    {#    <img src="{% static "images/murachlogo.jpg" %}" alt="Murach Logo" height="600", width="400">#}
+    <img src="{% static "pics/apm1.jpg" %}" alt="Murach Logo" height="600" , width="400">
+
+
+    <!--{#   <img src="images/murachlogo.gif" alt="Murach Logo" height="75">#}-->
+    <!--{#    <img src="/my_app/xstatic/images/murachlogo.gif" alt="Murach Logo" height="75">#}-->
+    {#    <h1>Mike Murach &amp; Associates, Inc.</h1>#}
+    <img src="{% static "pics/fac3.png" %}" alt="Facility" height="120", width="1300">
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+
+        /* basic setup */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: lightblue;
+        }
+
+        h2 {
+            padding: 1em;
+        }
+
+        /* the styles for the header, main content, sidebar, and footer */
+        header {
+            border: 2px solid purple;
+            background-color: greenyellow;
+        }
+
+        nav{
+
+            {#width: 400px;#}
+            {#height: 200px;#}
+            border: 2px solid purple;
+            background-color: purple;
+        }
+
+
+        body {
+            width: 950px;
+            height: 700px;
+            background-color: gray;
+            margin: 15px auto;
+            border: 2px solid black;
+        }
+
+        #sec1 {
+            width: 300px;
+            height: 100px;
+
+            float: left;
+            background-color: gray;
+            {#margin: 15px auto;#}
+            border: 2px solid black;
+        }
+
+
+
+
+
+
+        #sec2 {
+            width: 400px;
+            height: 250px;
+            border: 2px solid blue;
+            float: left;
+            background-color: rosybrown;
+            clear: both;
+        }
+
+        aside {
+            width: 300px;
+            border: 2px solid red;
+            float: right;
+            {#clear: both;#}
+            background-color: olivedrab;
+        }
+
+        footer {
+            clear: both;
+            border: 2px solid black;
+            background-color: lavenderblush;: ;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <header><h2>Header</h2></header>
+    <nav><h2>Navigation</h2></nav>
+	<section id="sec1"><h2>Section 1</h2></section>
+	<section id="sec2"><h2>Section 2</h2></section>
+    <aside><h2>Aside</h2></aside>
+	<footer><h2>Footer</h2></footer>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            margin: 30px;
+        }
+
+        textarea {
+            height: 5em;
+            width: 25em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <form name="dropdownlist" action="" method="post">
+        {% csrf_token %}
+        {#        Toppings:<br>#}
+        {#        <select name="toppings" multiple size="4">#}
+        {#            <option value="pepperoni">Pepperoni</option>#}
+        {#            <option value="sausage" selected>Sausage</option>#}
+        {#            <option value="mushrooms">Mushrooms</option>#}
+        {#            <option value="olives">Black olives</option>#}
+        {#            <option value="onions">Onions</option>#}
+        {#            <option value="bacon">Canadian bacon</option>#}
+        {#            <option value="pineapple">Pineapple</option>#}
+        {#        </select>#}
+
+
+        <label for="toppings">Toppings:</label><br>
+        <select id="toppings" name="toppings" multiple size="10">
+            <option value="pepperoni">Pepperoni</option>
+            <option value="sausage" selected>Sausage</option>
+            <option value="mushrooms">Mushrooms</option>
+            <option value="olives" selected>Black olives</option>
+            <option value="onions">Onions</option>
+            <option value="bacon">Canadian bacon</option>
+            <option value="pineapple">Pineapple</option>
+        </select>
+        <br><br><br>
+
+        <label for="toppings">Toppings:</label><br>
+        <select id="toppings" name="toppings" size="10">
+            <optgroup label="Group A">
+                <option value="pepperoni">Pepperoni</option>
+                <option value="sausage" selected>Sausage</option>
+                <option value="mushrooms">Mushrooms</option>
+                <option value="olives" selected>Black olives</option>
+                <option value="onions">Onions</option>
+                <option value="bacon">Canadian bacon</option>
+                <option value="pineapple">Pineapple</option>
+            </optgroup>
+
+            <optgroup label="Group B">
+                <option value="pepperoni">Pepperoni</option>
+                <option value="sausage" selected>Sausage</option>
+                <option value="mushrooms">Mushrooms</option>
+                <option value="olives" selected>Black olives</option>
+                <option value="onions">Onions</option>
+                <option value="bacon">Canadian bacon</option>
+                <option value="pineapple">Pineapple</option>
+
+            </optgroup>
+
+        </select>
+
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "app_base_html.html" %}
+{% load static %}
+
+{% block title %}Radio Buttont{% endblock %}
+
+{% block script %}
+{#    <link href="{% static "css/app_body.css" %}" rel="stylesheet">#}
+{% endblock %}
+
+
+{% block style %}
+{% endblock %}
+
+
+{% block content %}
+
+    <h2>Pizza ingredient</h2>
+
+    <form name="radio_checkbox" action="" method="post">
+        Crust:<br>
+        <label for="crust">Thin</label>
+        <input type="radio" id="crust" name="crust" value="thin">
+{#        <label for="crust">Thin</label><br>#}
+
+        <input type="radio" name="crust" value="deep" checked>Deep Dish<br>
+        <input type="radio" name="crust" value="hand">Hand Tossed<br><br>
+        Toppings:<br>
+        <input type="checkbox" id="topping1" name="topping1" value="pepperoni">
+        <label for="topping1">Pepperoni</label><br>
+        <input type="checkbox" name="topping2" value="mushrooms" disabled>Mushrooms<br>
+        <input type="checkbox" name="topping3" value="olives" checked>Olives<br>
+    </form>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,89 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}list{% endblock %}
+
+{% block link %}
+
+    {#    <link rel="stylesheet" href="/my_app/xstatic/styles/pb.css">#}
+{#    <link rel="stylesheet" href="{% static 'styles/pb.css' %}">#}
+
+
+{% endblock %}
+
+{#{% block style %}#}
+{#    <style>#}
+{#        body {#}
+{#            font-size: 100%;#}
+{#            width: 500px;#}
+{#            padding-left: 1em;#}
+{#        }#}
+{##}
+{#        h1 {#}
+{#            font-size: 175%;#}
+{#            margin-bottom: .5em;#}
+{#        }#}
+{##}
+{#        h2 {#}
+{#            font-size: 130%;#}
+{#            margin-bottom: .5em;#}
+{#        }#}
+{##}
+{#        ul.circle {#}
+{#            list-style-type: circle;#}
+{#        }#}
+{##}
+{#        ul.star {#}
+{#            list-style-image: url("/my_app/xstatic/images/star.png");#}
+{#        }#}
+{##}
+{#        ol.lower_alpha {#}
+{#            list-style-type: lower-alpha;#}
+{#        }#}
+{##}
+{#        #formatted {#}
+{#            margin: 0;#}
+{#            padding-bottom: .25em;#}
+{#        }#}
+{##}
+{#        ul.formatted, ul.formatted li {#}
+{#            margin: 0;#}
+{#            padding: 0;#}
+{#        }#}
+{##}
+{#        ul.formatted {#}
+{#            padding-left: 1em; /* determines left alignment */#}
+{#        }#}
+{##}
+{#        ul.formatted li {#}
+{#            padding-left: .25em; /* space between bullet and text */#}
+{#            padding-bottom: .25em; /* space after line item */#}
+{#        }#}
+{#    </style>#}
+{##}
+{#{% endblock %}#}
+
+{% block content %}
+
+    <h1>San Joaquin Valley Town Hall Programs</h1>
+    <ul>
+        <li>
+            <p>Join us for a complimentary coffee hour at the
+                {#                <a href="{% url 'my_app:saroyan' %}">William Saroyan Theatre</a>, 9:15 to 10:15#}
+                <a href="{% url 'pbtest' %}">William Saroyan Theatre</a>, 9:15 to 10:15
+                a.m. on the day of each lecture. The speakers usually attend this
+                very special event.</p>
+        </li>
+        <li>
+            <p>Extend the excitement of Town Hall by purchasing tickets to the
+                post-lecture luncheons. This unique opportunity allows you to ask
+                more questions of the speakers--plus spend extra time meeting new
+                Town Hall friends.</p>
+            <p>A limited number of tickets are available. Call (559) 555-1212
+                for reservations by the Friday preceding the event.</p>
+        </li>
+    </ul>
+
+
+{% endblock %}

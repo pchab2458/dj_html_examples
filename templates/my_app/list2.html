@@ -1,0 +1,90 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}list2{% endblock %}
+
+{% block link %}
+
+
+{#    <link rel="stylesheet" href="{% xstatic 'styles/pb.css' %}">#}
+
+
+{% endblock %}
+
+{% block style %}
+    <style>
+        body {
+            font-size: 100%;
+            width: 700px;
+            padding-left: 1em;
+        }
+
+        h1 {
+            font-size: 175%;
+            margin-bottom: .5em;
+        }
+
+        h2 {
+            font-size: 130%;
+            margin-bottom: .5em;
+        }
+
+        ul{
+            font-size: 130%;
+            margin-bottom: .5em;
+            color: red;
+
+        }
+
+        ul.circle {
+            list-style-type: circle;
+        }
+
+        ul.star {
+            list-style-image: url("/my_app/xstatic/images/star.png");
+        }
+
+        ol.lower_alpha {
+            list-style-type: lower-alpha;
+        }
+
+        #formatted {
+            margin: 0;
+            padding-bottom: .25em;
+        }
+
+        ul.formatted, ul.formatted li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.formatted {
+            padding-left: 1em; /* determines left alignment */
+        }
+
+        ul.formatted li {
+            padding-left: .25em; /* space between bullet and text */
+            padding-bottom: .25em; /* space after line item */
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+    <p><h2>We have books on a variety of languages, including</h2>
+		<ul >
+			<li><a href="{% url 'table_merge' %}">JavaScript</a></li>
+			<li>PHP</li>
+			<li>Java</li>
+			<li>C#</li>
+		</ul>
+
+    <p><h2>You will need to complete the following steps:</h2>
+		<ol>
+			<li>Enter your billing information.</li>
+			<li>Enter your shipping information.</li>
+			<li>Confirm your order.</li>
+		</ol>
+{% endblock %}

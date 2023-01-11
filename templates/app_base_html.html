@@ -1,0 +1,30 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="{% static "css/app_body.css" %}" rel="stylesheet">
+
+    {% block script %}
+    {% endblock %}
+
+    {% block style %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            margin: 30px;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <form name="file" action="" method="post">
+        {% csrf_token %}
+        Attach an image:<br>
+        <input type="file" name="fileupload" accept="image/jpeg image/gif">
+    </form>
+
+{% endblock %}

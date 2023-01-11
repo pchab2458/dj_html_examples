@@ -1,0 +1,30 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+
+{% block content %}
+
+    <form action="" name="render_file" method="post">
+        <label for="firstname">First name</label>
+        <input type="text" name="firstname" id="firstname" size="50" autofocus><br>
+
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" id="lastname"><br>
+
+        <label for="city">City</label>
+        <input type="text" name="city" id="city"><br>
+
+        <label for="state">State</label>
+        <input type="text" name="state" id="state"><br>
+
+        <label for="ziocode">Zip code</label>
+        <input type="text" name="zipcode" id="ziocode"><br>
+
+        <input type="submit" name="register" id="button" value="Register">
+        <input type="reset" name="reset" id="reset" value="Reset">
+
+
+    </form>
+
+
+
+{% endblock %}

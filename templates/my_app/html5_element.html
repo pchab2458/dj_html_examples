@@ -1,0 +1,62 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Core attributes{% endblock %}
+
+{% block style %}
+
+    <style>
+        body {
+            font-size: 100%;
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+
+        header {
+            padding-bottom: .75em;
+            border-bottom: 3px solid black;
+            margin-bottom: 1.5em;
+        }
+
+        em {
+            font-size: 120%;
+            margin-bottom: 0;
+            color: red;
+        }
+
+        strong {
+            font-size: 150%;
+            margin-bottom: 0;
+        }
+
+        i {
+            font-size: 120%;
+            margin-bottom: 0;
+            color: blue;
+
+        }
+
+    </style>
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div id="page">
+        <header>
+            <h1>San Joaquin Valley Town Hall</h1>
+        </header>
+        <section>
+            <p>Welcome to San Joaquin Valley Town Hall.We have some fascinating speakers for you this season!</p>
+        </section>
+        <footer>
+            <p>&copy; Copyright 2018 San Joaquin Valley Town Hall.</p>
+        </footer>
+    </div>
+
+{% endblock %}

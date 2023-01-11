@@ -1,0 +1,37 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script%}
+
+     <script>
+    function setProgressAndMeter() {
+        var progress=document.getElementById('progressbar');
+        setInterval(setProgressAndMeter,500);
+        progress.value += 10;
+        var meter = document.getElementById("meterbar");
+        setInterval(setProgressAndMeter, 500);
+        meter.value += 10;
+
+    }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <form action="" name="output" method="post">
+        <h2>Progress and Meter bar elements</h2>
+        <label for="progressbar" class="lab_progress">Progress set by JavaScript on page load:</label>
+        <progress id="progressbar" max="100" value="0"></progress>
+
+        <h2>Meter Element</h2>
+        <label for="meterbar" class="lab_progress">Meter set by JavaScript on page load:</label>
+        <meter id="meterbar" max="100" value="0" optimum="50" high="60"></meter>
+
+
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            font: 90% Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+
+        input {
+            width: 15em;
+            margin-left: 1em;
+            margin-bottom: .5em;
+        }
+
+         input:required,input[required] {
+            border: 2px solid brown;
+        }
+
+        input:valid {
+            border: 1px solid black;
+        }
+
+        input:invalid {
+            {#box-shadow: none;#}
+
+            box-shadow: 5px 2px 0 red;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+{#    <form name="myform" action="survey.php" method="post">#}
+     <form name="myform" action="." method="post">
+        Name: <input type="text" name="name" required ><br>
+        Address: <input type="text" name="address" formnovalidate><br>
+        Zip: <input type="text" name="zip" required><br>
+        Phone: <input type="text" name="phone" required autocomplete="off"><br>
+        <input type="submit" name="submit" value="Submit Survey">
+    </form>
+
+{% endblock %}

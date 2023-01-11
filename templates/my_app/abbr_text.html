@@ -1,0 +1,43 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Abbreviation{% endblock %}
+
+{% block style %}
+
+    <style>
+        body {
+            font-size: 100%;
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+
+        header {
+            padding-bottom: .75em;
+            border-bottom: 3px solid black;
+            margin-bottom: 1.5em;
+        }
+
+        h1 {
+            font-size: 200%;
+            margin-bottom: 0;
+        }
+    </style>
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <header>
+        <h1>abbr element</h1>
+    </header>
+    <main>
+        <p><abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+    </main>
+
+{% endblock %}

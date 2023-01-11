@@ -1,0 +1,57 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Inline elements{% endblock %}
+
+{% block style %}
+
+    <style>
+        body {
+            font-size: 100%;
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+
+        header {
+            padding-bottom: .75em;
+            border-bottom: 3px solid black;
+            margin-bottom: 1.5em;
+        }
+
+        em {
+            font-size: 120%;
+            margin-bottom: 0;
+            color: red;
+        }
+
+        strong {
+            font-size: 150%;
+            margin-bottom: 0;
+        }
+
+        i {
+            font-size: 120%;
+            margin-bottom: 0;
+            color: blue;
+
+        }
+
+    </style>
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <p><q>If you don't get 78%</q> or more on your final, <em>you won't pass.</em></p>
+    <p>Save a bundle at our <strong>big yearend sale</strong>.</p>
+    <p>When the dialog box is displayed, enter <kbd>brock21</kbd>.</p>
+    <p>The <i>chemical symbol</i> for water is H<sub>2</sub>O. </p>
+    <p><q>To sleep, perchance to dream-ay, there's the rub.</q></p>
+    <p><em>Greatest formula of the nature: e = mc<sup>2</sup></em></p>
+
+{% endblock %}

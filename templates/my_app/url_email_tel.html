@@ -1,0 +1,40 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+
+{% block content %}
+
+    <form action="" name="url_email_tel" method="post">
+
+        <h2>Your information:</h2>
+        <label for="email" class="lab_url_email_tel">Your e-mail address:</label>
+        <input type="email" name="email" id="email" required><br>
+
+        <label for="link" class="lab_url_email_tel">Your website:</label>
+        <input type="url" name="link" id="link" list="links"><br>
+
+        <label for="phone" class="lab_url_email_tel">Your phone number:</label>
+        <input type="tel" name="phone" id="phone" required autocomplete="off" ><br><br>
+
+        <datalist id="links">
+            <option value="http://www.google.com/" label="Google">
+            <option value="http://www.yahoo.com/" label="Yahoo">
+            <option value="http://www.bing.com/" label="Bing">
+            <option value="http://www.dogpil.com/" label="Dogpil">
+
+                {#            <option value="pb@gmail.com">#}
+                {#            <option value="ann@yahoo.com" label="Yahoo">#}
+                {#            <option value="nan@bing.com" label="Bing">#}
+                {#            <option value="yl@dogpil.com" label="Dogpil">#}
+
+        </datalist>
+        <br><br>
+
+        <input type="submit" name="submit" value="Submit survey">
+        <input type="reset" name="reset" value="Clear">
+
+
+    </form>
+
+
+
+{% endblock %}

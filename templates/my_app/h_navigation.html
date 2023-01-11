@@ -1,0 +1,46 @@
+{% extends 'my_app/../base.html' %}
+
+{% load static %}
+
+{% block title %}Navigation menus{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <h2>Vertical Navigation Menu</h2>
+    <nav id="nav_menu_1">
+        <ul>
+            <li><a href="{% url 'my_app:pbtest' %}">Home</a></li>
+            <li><a href="{% url 'my_app:listbox' %}">Get Tickets</a></li>
+            <li><a href="{% url 'my_app:table_merge' %}" class="current">Become a Member</a></li>
+            <li><a href="{% url 'my_app:placeholder' %}">About Us</a></li>
+        </ul>
+    </nav>
+
+    <h2>Horizontal Navigation Menu 1</h2>
+    <nav id="nav_menu_2">
+        <ul>
+            <li><a href="{% url 'my_app:pbtest' %}">Home</a></li>
+            <li><a href="{% url 'my_app:listbox' %}">Get Tickets</a></li>
+            <li><a href="{% url 'my_app:table_merge' %}" class="current">Become a Member</a></li>
+            <li><a href="{% url 'my_app:placeholder' %}">About Us</a></li>
+        </ul>
+    </nav>
+
+    <h2>Horizontal Navigation Menu 2</h2>
+    <nav id="nav_menu_3">
+        <ul>
+            <li><a href="{% url 'my_app:pbtest' %}">Home</a></li>
+            <li><a href="{% url 'my_app:listbox' %}">Get Tickets</a></li>
+            <li><a href="{% url 'my_app:table_merge' %}" class="current">Become a Member</a></li>
+            <li><a href="{% url 'my_app:placeholder' %}" class="lastitem">About Us</a></li>
+        </ul>
+    </nav>
+
+{% endblock %}

@@ -1,0 +1,289 @@
+; ESCE.INF  -- Windows Still Image Setup File for Windows
+; Copyright (c) 2011 Seiko Epson Corporation
+; Manufacturer: Seiko Epson Corporation
+
+;--------------------------------------------------------------------------------
+
+[Version]
+Signature="$Windows NT$"
+Class=Image
+ClassGUID={6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Provider=%Mfg%
+CatalogFile.nt=esce.cat
+DriverVer=09/04/2015,3.7.9.3
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[DestinationDirs]
+DefaultDestDir=11							; LDID_SYS
+DS.Files=10,TWAIN_32\ESCNDV
+TBL.Files=10,TWAIN_32\ESCNDV\ESSYS			; LDID_WIN\TWAIN_32\ESCNDV\ESSYS
+DRV.Files=10,TWAIN_32\ESCNDV\ES00CE
+EPSON.Color.Files=23						; LDID_SYS\COLOR
+
+;--------------------------------------------------------------------------------
+
+[Strings]
+Mfg					= "EPSON"
+DeviceDesc			= "EPSON XP-200/ME-301"
+DSName				= "EPSON XP-200/ME-301"
+Button0				= "Scan to PDF Button"
+RegSection			= "SOFTWARE\EPSON\EPSON Scan\ES00CE"
+RegSection.x64		= "SOFTWARE\WoW6432Node\EPSON\EPSON Scan\ES00CE"
+DiskName			= "EPSON Scanners Driver Disk"
+ICCName				= "XP200_R.ICC"
+
+;--------------------------------------------------------------------------------
+
+[Manufacturer]
+%Mfg%=Models,NTx86.5.1,NTx86.6.0,NTamd64.5.2,NTamd64.6.0
+
+[Models]
+
+[Models.NTx86.5.1]
+%DeviceDesc%  = USB.ESWIA1,USB\VID_04B8&PID_0896&MI_00
+
+[Models.NTx86.6.0]
+%DeviceDesc%  = USB.ESWIA2,USB\VID_04B8&PID_0896&MI_00
+
+[Models.NTamd64.5.2]
+%DeviceDesc%  = USB.ESWIA1.x64,USB\VID_04B8&PID_0896&MI_00
+
+[Models.NTamd64.6.0]
+%DeviceDesc%  = USB.ESWIA2.x64,USB\VID_04B8&PID_0896&MI_00
+
+;--------------------------------------------------------------------------------
+
+[USB.ESWIA1]
+Include=sti.inf
+Needs=STI.USBSection
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x01
+Capabilities=0x13
+Events=ESWIA.Events
+DeviceData=ESWIA.DeviceData
+AddReg=ESWIAUD.AddReg,USB.IF.AddReg,ESCAN.AddReg
+CopyFiles=ESWIAUD.USD.Files,DS.Files,DRV.Files,TBL.Files,EPSON.Color.Files
+ICMProfiles=%ICCName%
+
+[USB.ESWIA1.Services]
+Include=sti.inf
+Needs=STI.USBSection.Services
+
+[USB.ESWIA2]
+Include=sti.inf
+Needs=STI.USBSection
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x01
+Capabilities=0x13
+Events=ESWIA.Events
+DeviceData=ESWIA.DeviceData
+AddReg=ESWIA2UD.AddReg,USB.IF.AddReg,ESCAN.AddReg
+CopyFiles=ESWIA2UD.USD.Files,DS.Files,DRV.Files,TBL.Files,EPSON.Color.Files
+ICMProfiles=%ICCName%
+
+[USB.ESWIA2.Services]
+Include=sti.inf
+Needs=STI.USBSection.Services
+
+;--------------------------------------------------------------------------------
+
+[USB.ESWIA1.x64]
+Include=sti.inf
+Needs=STI.USBSection
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x01
+Capabilities=0x13
+Events=ESWIA.Events
+DeviceData=ESWIA.DeviceData
+AddReg=ESWIAUD.x64.AddReg,USB.IF.AddReg,ESCAN.x64.AddReg
+CopyFiles=ESWIAUD.x64.USD.Files,DS.Files,DRV.Files,TBL.Files,EPSON.Color.Files
+ICMProfiles=%ICCName%
+
+[USB.ESWIA1.x64.Services]
+Include=sti.inf
+Needs=STI.USBSection.Services
+
+[USB.ESWIA2.x64]
+Include=sti.inf
+Needs=STI.USBSection
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x01
+Capabilities=0x13
+Events=ESWIA.Events
+DeviceData=ESWIA.DeviceData
+AddReg=ESWIA2UD.x64.AddReg,USB.IF.AddReg,ESCAN.x64.AddReg
+CopyFiles=ESWIA2UD.x64.USD.Files,DS.Files,DRV.Files,TBL.Files,EPSON.Color.Files
+ICMProfiles=%ICCName%
+
+[USB.ESWIA2.x64.Services]
+Include=sti.inf
+Needs=STI.USBSection.Services
+
+;--------------------------------------------------------------------------------
+
+[ESWIA.DeviceData]
+TwainDS=%DSName%
+Model=%DeviceDesc%
+NumButtons=1,1
+HOptRes=1200,1
+VOptRes=2400,1
+ModelCode="ES00CE"
+
+[ESWIA.Events]
+Button0=%Button0%,{A6C5A715-8C6E-11D2-977A-0000F87A926F},*
+
+;--------------------------------------------------------------------------------
+
+[ESWIAUD.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,USDClass,,"{580A2401-9E98-4a8a-BEC5-94173FEE8968}"
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968},,,"EPSON USD"
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968}\InProcServer32,,,%11%\eswiaud.dll
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968}\InProcServer32,ThreadingModel,,"Both"
+
+[ESWIAUD.x64.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,USDClass,,"{580A2401-9E98-4a8a-BEC5-94173FEE8968}"
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968},,,"EPSON USD"
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968}\InProcServer32,,,%11%\esxwiaud.dll
+HKCR,CLSID\{580A2401-9E98-4a8a-BEC5-94173FEE8968}\InProcServer32,ThreadingModel,,"Both"
+
+[ESWIA2UD.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,USDClass,,"{511F3F20-732C-41f3-B413-07DA0EC825C5}"
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5},,,"EPSON USD"
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5}\InProcServer32,,,%11%\esw2ud.dll
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5}\InProcServer32,ThreadingModel,,"Both"
+
+[ESWIA2UD.x64.AddReg]
+HKR,,DevLoader,,*NTKERN
+HKR,,USDClass,,"{511F3F20-732C-41f3-B413-07DA0EC825C5}"
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5},,,"EPSON USD"
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5}\InProcServer32,,,%11%\esxw2ud.dll
+HKCR,CLSID\{511F3F20-732C-41f3-B413-07DA0EC825C5}\InProcServer32,ThreadingModel,,"Both"
+
+[USB.IF.AddReg]
+HKR,,HardwareConfig,1,4
+
+[ESCAN.AddReg] ; Model dependent
+HKLM,%RegSection%,"Version",0x00010001 ,0x00010000
+HKLM,%RegSection%,"Hardware File",,"ES00CE.HRD"
+HKLM,%RegSection%,"Supported",,"EPSON XP-200/ME-301"
+
+[ESCAN.x64.AddReg] ; Model dependent
+HKLM,%RegSection.x64%,"Version",0x00010001 ,0x00010000
+HKLM,%RegSection.x64%,"Hardware File",,"ES00CE.HRD"
+HKLM,%RegSection.x64%,"Supported",,"EPSON XP-200/ME-301"
+
+;--------------------------------------------------------------------------------
+
+[ESWIAUD.USD.Files]
+eswiaud.dll,,,32
+
+[ESWIAUD.x64.USD.Files]
+esxwiaud.dll,,,32
+
+[ESWIA2UD.USD.Files]
+esw2ud.dll,,,32
+
+[ESWIA2UD.x64.USD.Files]
+esxw2ud.dll,,,32
+
+[DS.Files]
+xp200.ds,,,32
+
+[DRV.Files]
+es00ce.hrd,,,32
+es00ce.dti,,,32
+esicm.dll,,,32
+esdevif.dll,,,32
+esdevcl.dll,,,32
+esscncl.dll,,,32
+esui.dll,,,32
+esutwb.dll,,,32
+esdscl.dll,,,32
+estwpmg.dll,,,32
+esfit.dll,,,32
+esimgctl.dll,,,32
+estwm.exe,,,32
+esimfl.dll,,,32
+esres.dll,,,32
+esdtr.dll,,,32
+esdtr2.dll,,,32
+version.dat,,,32
+esimgdet.dll,,,32
+esddc.dll,,,32
+esddc.prm,,,32
+escires.dll,,,32
+esdde.dll,,,32
+esdde.prm,,,32
+escndv.chm,,,32
+
+[TBL.Files]
+es00ce.idx,,,32
+
+[EPSON.Color.Files]
+ewsrgb.icm,,,32
+ewrgb18.icm,,,32
+ewgray22.icm,,,32
+ewgray18.icm,,,32
+xp200_r.icc,,,32
+
+;--------------------------------------------------------------------------------
+
+[SourceDisksNames]
+2000=%DiskName%,EsCore.cab,,
+2001=%DiskName%,ModUsd.cab,,
+2003=%DiskName%,ResLang.cab,,
+2004=%DiskName%,ModExt.cab,,
+2206=%DiskName%,xp200.cab,,
+
+[SourceDisksFiles]
+esicm.dll=2000
+esfit.dll=2000
+esimfl.dll=2000
+esdevif.dll=2000
+esdevcl.dll=2000
+esscncl.dll=2000
+esui.dll=2000
+esutwb.dll=2000
+esdscl.dll=2000
+estwpmg.dll=2000
+esimgctl.dll=2000
+estwm.exe=2000
+version.dat=2000
+esimgdet.dll=2000
+esddc.dll=2000
+esddc.prm=2000
+esdde.dll=2000
+esdde.prm=2000
+escires.dll=2000
+ewsrgb.icm=2000
+ewrgb18.icm=2000
+ewgray22.icm=2000
+ewgray18.icm=2000
+esdde.dll=2000
+esdde.prm=2000
+
+eswiaud.dll=2001
+esxwiaud.dll=2001
+esw2ud.dll=2001
+esxw2ud.dll=2001
+
+esres.dll=2003
+escndv.chm=2003
+
+esdtr.dll=2004
+esdtr2.dll=2004
+
+es00ce.idx=2206
+es00ce.hrd=2206
+es00ce.dti=2206
+xp200.ds=2206
+xp200_r.icc=2206

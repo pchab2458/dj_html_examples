@@ -1,0 +1,39 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+    <style>
+        body {
+            margin: 30px;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <form name="fieldset" action="" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Crust</legend>
+            <input type="radio" name="crust" id="crust1" value="thin">
+            <label for="crust1">Thin Crust</label><br>
+            <input type="radio" name="crust" id="crust2" value="deep">
+            <label for="crust2">Deep Dish</label><br>
+            <input type="radio" name="crust" id="crust3" value="hand" disabled>
+            <label for="crust3">Hand Tossed</label>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Toppings</legend>
+            <input type="checkbox" name="topping1" id="topping1" value="pepperoni" disabled>
+            <label for="topping1">Pepperoni</label><br>
+            <input type="checkbox" name="topping2" id="topping2" value="mushrooms">
+            <label for="topping2">Mushrooms</label><br>
+            <input type="checkbox" name="topping3" id="topping3" value="olives">
+            <label for="topping3">Black Olives</label>
+        </fieldset>
+    </form>
+
+{% endblock %}

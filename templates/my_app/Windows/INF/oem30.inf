@@ -1,0 +1,63 @@
+;
+; SurfaceCoSAR.inx
+;
+; Microsoft Surface CoSAR Driver Inf
+;
+; Copyright (c) Microsoft Corporation. All rights reserved.
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceCoSAR.cat
+DriverVer=11/06/2015,1.0.47.0
+PnPLockDown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfaceCoSAR.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%SurfaceCoSAR.DeviceDesc%=SurfaceCoSAR_Device, ACPI\MSHW0053
+
+[SurfaceCoSAR_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+SurfaceCoSAR.sys
+
+;-------------- Service installation
+[SurfaceCoSAR_Device.NT.Services]
+AddService = SurfaceCoSAR,%SPSVCINST_ASSOCSERVICE%, SurfaceCoSAR_Service_Inst
+
+; -------------- SurfaceCoSAR driver install sections
+[SurfaceCoSAR_Service_Inst]
+DisplayName    = %SurfaceCoSAR.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\SurfaceCoSAR.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Microsoft" 
+ClassName="Surface CoSAR Driver"
+DiskName = "Surface CoSAR Driver Installation Disk"
+SurfaceCoSAR.DeviceDesc = "Surface CoSAR Driver"
+SurfaceCoSAR.SVCDESC = "Surface CoSAR Driver Service"

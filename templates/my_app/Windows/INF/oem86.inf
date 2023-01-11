@@ -1,0 +1,64 @@
+;
+; SurfaceSystemTelemetryDriver.inf
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceSystemTelemetryDriver.cat
+DriverVer=08/20/2015,3.0.100.0
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfaceSystemTelemetryDriver.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%SurfaceSystemTelemetryDriver.DeviceDesc%=SurfaceSystemTelemetryDriver_Device, ACPI\MSHW0045
+
+[SurfaceSystemTelemetryDriver_Device.NT]
+CopyFiles=DefaultDestDir
+
+[DefaultDestDir]
+SurfaceSystemTelemetryDriver.sys
+
+[SurfaceSystemTelemetryDriver_Device.NT.HW]
+
+;-------------- Service installation
+[SurfaceSystemTelemetryDriver_Device.NT.Services]
+;
+; %SPSVCINST_ASSOCSERVICE% should only be specificed if this is a function driver.
+;
+AddService = SurfaceSystemTelemetryDriver,%SPSVCINST_ASSOCSERVICE%, SurfaceSystemTelemetryDriver_Service_Inst
+
+; -------------- SurfaceSystemTelemetryDriver driver install sections
+[SurfaceSystemTelemetryDriver_Service_Inst]
+DisplayName    = %SurfaceSystemTelemetryDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\SurfaceSystemTelemetryDriver.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Microsoft"
+DiskName = "Surface System Telemetry Driver Installation Disk"
+SurfaceSystemTelemetryDriver.DeviceDesc = "Surface System Telemetry"
+SurfaceSystemTelemetryDriver.SVCDESC = "Surface System Telemetry Driver"

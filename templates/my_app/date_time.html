@@ -1,0 +1,81 @@
+{% extends 'my_app/../base.html' %}
+{% block title %}render_file{% endblock %}
+{% block script %}
+
+   <style>
+   body{
+       font: 90% Arial, Helvetica, sans-serif;
+       margin: 1em;
+       background-color: darkgray;
+
+   }
+   label{
+       float: left;
+       width: 5em;
+       text-align: right;
+
+   }
+
+   input{
+       margin-left: .5em;
+       width: 15em;
+   }
+
+   #submit{
+       margin-left: 2em;
+       width: 10em;
+   }
+   #reset{
+       margin-left: 1em;
+       width: 10em;
+   }
+
+
+   </style>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <form action="" name="date_time" method="post">
+
+
+        {#        Date and time:&nbsp;&nbsp;#}
+        {#        <input type="time" name="date"><br><br>#}
+
+        {#        Local date and time:&nbsp;&nbsp;#}
+        {#        <input type="datetime-local" name="date_time_loc" ><br><br>#}
+        {##}
+        {#        Date:&nbsp;&nbsp;#}
+        {#        <input type="date" name="xdate" ><br><br>#}
+
+
+        <label for="date" class="lab_date_time">Date(UTC):</label>
+        <input type="date" name="date" id="date"><br><br>
+
+        <label for="date_time_loc" class="lab_date_time">Datetime local:</label>
+        <input type="datetime-local" name="date_time_loc" id="date_time_loc"><br><br>
+
+        <label for="time" class="lab_date_time">Time:</label>
+        <input type="time" name="time" id="time"><br><br>
+
+
+        <label for="month" class="lab_date_time">Month:</label>
+        <input type="month" name="monthe" id="month"><br><br>
+
+
+        <label for="week" class="lab_date_time">Week:</label>
+        <input type="week" name="week" id="week"><br><br>
+
+
+
+        <input id="submit" type="submit" name="submit" value="Submit survey">
+        <input id="reset" type="reset" name="reset" value="Clear">
+
+
+    </form>
+
+
+
+{% endblock %}

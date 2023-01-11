@@ -1,0 +1,62 @@
+; Copyright 2007-2009 Hewlett-Packard
+
+[Version]
+DriverVer=06/21/2011,3.0.0.0
+Signature="$Windows NT$"
+Provider=%HP%
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+CatalogFile=nullprint.CAT
+
+
+[Manufacturer]
+%HP%=HP, NTx86.5.1, NTx86.6.0, NTamd64.6.0, NTx86.5.2, NTamd64.5.2
+
+; Windows XP x86
+[HP.NTx86.5.1]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,MF\Deskjet_2520_series&WSD&IP_PRINT
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389
+
+; Windows Vista
+[HP.NTx86.6.0]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,MF\Deskjet_2520_series&WSD&IP_PRINT
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,WSDPRINT\HPDeskjet_2520_serieB389
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389
+
+; Windows Vista x64
+[HP.NTamd64.6.0]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,MF\Deskjet_2520_series&WSD&IP_PRINT
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,WSDPRINT\HPDeskjet_2520_serieB389
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389
+
+;windows xp x64
+;[HP.NTamd64]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389
+
+; Windows 2003 Server x86
+[HP.NTx86.5.2]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,MF\Deskjet_2520_series&WSD&IP_PRINT
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389P
+
+; Windows 2003 Server x64
+[HP.NTamd64.5.2]
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,MF\Deskjet_2520_series&WSD&IP_PRINT
+"Null Print - HP Deskjet 2520 series"=INSTALL_DJ2520__NULL,USBPRINT\HPDeskjet_2520_serieB389
+
+[INSTALL_DJ2520__NULL]
+AddReg = Print_AddReg
+
+[INSTALL_DJ2520__NULL.HW]
+AddReg = Print_AddReg
+
+[INSTALL_DJ2520__NULL.Services]
+AddService = ,2    ; no value for the service name
+
+
+[Fax_AddReg]
+HKR,,PrintStub,0x00010001,1
+
+
+[Strings]
+HP="Hewlett-Packard"
+HPDisk="HP CD"

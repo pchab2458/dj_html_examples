@@ -1,0 +1,177 @@
+;
+; SurfacePenClickFilter.inf
+;
+; Copyright (c) Microsoft Corporation. All rights reserved
+;
+
+[Version]
+Signature="$Windows NT$"
+ClassGUID={4D36E96B-E325-11CE-BFC1-08002BE10318}
+Class=Keyboard
+Provider=%ManufacturerName%
+CatalogFile=SurfacePenClickFilter.cat
+DriverSet={56F88F63-9180-4C5C-A561-F72B43F6EA60}
+PnPLockDown=1
+
+DriverVer=08/18/2015,1.1.350.1
+
+[DestinationDirs]
+DefaultDestDir   = 12
+;
+; Driver information
+;
+;************************************************************
+; Install Section
+;************************************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+
+;========= English/Global Devices
+%SurfacePenClickFilter.DeviceDesc% = SurfacePenClickFilter, HID\{00001812-0000-1000-8000-00805f9b34fb}_DEV_VID&02045E_PID&090E&Col01
+
+;========= Japanese Devices
+;%SurfacePenClickFilter.DeviceDesc% = EraseClickFilter_109, HID\VEN_MSHW&DEV_0004&SUBSYS_MSAY000E&Col01
+
+;************************************************************
+; General installation section
+;************************************************************
+
+;========= English/Global section =========
+[EraseClickFilterNull.NT]
+; perform port related actions from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT
+; Copy the driver over
+CopyFiles=EraseClickFilterNull.CopyFiles
+
+[SurfacePenClickFilter.NT]
+; perform port related actions from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT
+; Copy the driver over
+CopyFiles=SurfacePenClickFilter.CopyFiles
+
+;========= Japanese section =========
+[EraseClickFilterNull_109.NT]
+; perform port related actions from keyboard.inf
+Include = keyboard.inf
+Needs    = HID_Keyboard_Inst.NT,HID_106_Keyboard_Inst.NT
+; Copy the driver over
+CopyFiles=EraseClickFilterNull.CopyFiles
+
+[EraseClickFilter_109.NT]
+; perform port related actions from keyboard.inf
+Include = keyboard.inf
+Needs    = HID_Keyboard_Inst.NT,HID_106_Keyboard_Inst.NT
+; Copy the driver over
+CopyFiles=SurfacePenClickFilter.CopyFiles
+
+;************************************************************
+; File sections
+;************************************************************
+
+[EraseClickFilterNull.CopyFiles]
+
+[SurfacePenClickFilter.CopyFiles]
+SurfacePenClickFilter.sys
+
+;************************************************************
+; Service Installation
+;************************************************************
+
+;========= English/Global Services section =========
+[EraseClickFilterNull.NT.Services]
+; Install the port driver and mouclass from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT.Services
+
+[SurfacePenClickFilter.NT.Services]
+AddService = SurfacePenClickFilter,  , kbfilter_Service_Inst
+; Install the port driver and mouclass from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT.Services
+
+;========= Japanese Services section =========
+[EraseClickFilterNull_109.NT.Services]
+; Install the port driver and mouclass from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT.Services
+
+[EraseClickFilter_109.NT.Services]
+AddService = SurfacePenClickFilter,  , kbfilter_Service_Inst
+; Install the port driver and mouclass from keyboard.inf
+Include=keyboard.inf
+Needs=HID_Keyboard_Inst.NT.Services
+
+;========= English/Global HW section =========
+[EraseClickFilterNull.NT.HW]
+; run the directives need by the port driver
+Include = keyboard.inf
+Needs    = HID_Keyboard_Inst.NT.HW
+
+[SurfacePenClickFilter.NT.HW]
+; Add the device upper filter
+AddReg = SurfacePenClickFilter.HW.AddReg
+; run the directives need by the port driver
+Include = keyboard.inf
+Needs    = HID_Keyboard_Inst.NT.HW
+
+;========= Japanese HW section =========
+[EraseClickFilterNull_109.NT.HW]
+; run the directives need by the port driver
+Include = keyboard.inf
+Needs    = HID_106_Keyboard_Inst.NT.HW
+
+[EraseClickFilter_109.NT.HW]
+; Add the device upper filter
+AddReg = SurfacePenClickFilter.HW.AddReg
+; run the directives need by the port driver
+Include = keyboard.inf
+Needs    = HID_106_Keyboard_Inst.NT.HW
+
+[kbfilter_Service_Inst]
+DisplayName    = %SurfacePenClickFilter.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\SurfacePenClickFilter.sys
+
+[SurfacePenClickFilter.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"SurfacePenClickFilter"
+
+
+;************************************************************
+; Source file information
+;************************************************************
+
+[SourceDisksNames]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles]
+SurfacePenClickFilter.sys = 1,,
+
+;************************************************************
+; Strings
+;************************************************************
+
+[Strings]
+;
+; Non-Localizable Strings
+;
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = "System\CurrentControlSet\Services"
+
+;
+; Localizable Strings
+;
+DiskId1="WDS Base Driver Installation Disk"
+SurfacePenClickFilter.DeviceDesc = "Surface Pen Click Filter"
+SurfacePenClickFilter.SvcDesc = "Surface Pen Click Filter Service"
+ManufacturerName="Microsoft"

@@ -1,0 +1,91 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfaceDockFwUpdate.inf
+;
+; Description:        Driver installation file for Surface Dock firmware update.
+;
+; Component10: Version 18.1136.624 (0x0491C270)
+; Component20: Version 18.1110.624 (0x04915A70)
+;
+; Copyright (C) 2015 Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceDockFwUpdate.cat
+DriverVer=03/22/2016,1.2.6.0
+PnPLockDown=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+SurfaceDockFwUpdate.dll=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=SurfaceDockFwUpdate, {5E9A8CDC-14AB-4609-A017-68BCE594AB68}\SurfaceDockFwUpdate
+
+; =================== UMDF Device ==================================
+
+[SurfaceDockFwUpdate.NT]
+CopyFiles=SurfaceDockFwUpdate.CopyFiles
+
+[SurfaceDockFwUpdate.NT.HW]
+;Section required to prevent warnings
+
+[SurfaceDockFwUpdate.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall     ; This sets the device as a function
+
+[SurfaceDockFwUpdate.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[SurfaceDockFwUpdate.NT.Wdf]
+UmdfService=SurfaceDockFwUpdate,SurfaceDockFwUpdate_Install
+UmdfServiceOrder=SurfaceDockFwUpdate
+
+[SurfaceDockFwUpdate_Install]
+UmdfLibraryVersion=2.0.0
+ServiceBinary=%12%\UMDF\SurfaceDockFwUpdate.dll
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType  = %SERVICE_KERNEL_DRIVER%
+StartType    = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\WUDFRd.sys
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,WudfCoInstaller.dll
+
+[CoInstallers_CopyFiles]
+;Section required to prevent warnings
+
+[DestinationDirs]
+SurfaceDockFwUpdate.CopyFiles=12,UMDF ; copy to drivers\umdf
+
+[SurfaceDockFwUpdate.CopyFiles]
+SurfaceDockFwUpdate.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Microsoft"
+DiskName = "SurfaceDockFwUpdate Installation Disk"
+WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceName="Surface Dock Firmware Update"
+
+; non-localizable
+SERVICE_KERNEL_DRIVER = 1
+SERVICE_BOOT_START    = 0
+SERVICE_SYSTEM_START  = 1
+SERVICE_AUTO_START    = 2
+SERVICE_DEMAND_START  = 3
+SERVICE_ERROR_NORMAL  = 1
+SERVICE_ERROR_IGNORE  = 0
+
